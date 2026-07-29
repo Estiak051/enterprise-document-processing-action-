@@ -2,159 +2,331 @@
 
 # Enterprise Workflow Implementation Targets
 
-Version: 1.0
+Version: 2.0
 
 Status: LOCKED
 
 Priority: CRITICAL
 
+Architecture: Immutable
+
 ---
 
 # PURPOSE
 
-This document defines the official implementation targets for the Intelligent Document Processing Platform.
+This document defines the official implementation contract for the Enterprise Intelligent Document Processing Platform.
 
-All architecture documents (01–25) describe WHAT must be built.
+Documents 01–25 define:
 
-This document defines WHERE the implementation must be built.
+• WHAT must be built
 
-The AI must NEVER ask where to implement the workflow.
+This document defines:
 
-This document answers that question.
+• HOW implementation must be performed
 
----
+• WHERE implementation begins
 
-# IMPLEMENTATION POLICY
+• WHEN implementation may continue
 
-The AI must generate ONE independent n8n workflow for each workflow listed below.
+• WHAT the AI is allowed to modify
 
-Each workflow must remain modular.
+• WHAT the AI is forbidden to modify
 
-Do not combine multiple workflows into one workflow.
+This document overrides every default coding behavior of the AI.
 
-Do not redesign the workflow boundaries.
-
-Do not rename workflow files.
-
-Complete ONE workflow before moving to the next.
-
-Wait for user approval before starting the next workflow.
+The repository itself is the ONLY source of truth.
 
 ---
 
-####################################################################
-WORKFLOW IMPLEMENTATION ORDER
-####################################################################
+# IMPLEMENTATION CONTRACT
 
-Implementation must always follow this sequence.
+The AI is NOT allowed to redesign this project.
 
-WF-01
+The AI is NOT allowed to simplify this project.
+
+The AI is NOT allowed to optimize this project.
+
+The AI is NOT allowed to replace technologies.
+
+The AI is NOT allowed to introduce new architecture.
+
+The AI is NOT allowed to remove workflow layers.
+
+The AI is NOT allowed to merge workflows.
+
+The AI is an IMPLEMENTATION ENGINE only.
+
+---
+
+# IMPLEMENTATION TARGET POLICY
+
+IMPORTANT
+
+This repository intentionally DOES NOT contain n8n workflow JSON files.
+
+The workflow JSON files must be CREATED by the AI.
+
+The AI must NEVER ask:
+
+"Where should I implement?"
+
+"Which workflow file should I modify?"
+
+"Please upload workflow JSON."
+
+Those questions are prohibited.
+
+Instead,
+
+the AI must CREATE the workflow JSON from scratch according to this repository.
+
+Each generated workflow becomes the official implementation.
+
+---
+
+# WORKFLOW GENERATION POLICY
+
+Each workflow must be generated independently.
+
+Each workflow must become one independent n8n workflow.
+
+Never merge workflows.
+
+Never generate multiple workflows together.
+
+Never create helper workflows.
+
+Never create temporary workflows.
+
+Never create experimental workflows.
+
+---
+
+# IMPLEMENTATION ORDER (LOCKED)
+
+The following order is mandatory.
+
+WF-01 Gmail Intake
 
 ↓
 
-WF-02
+WF-02 Attachment Processor
 
 ↓
 
-WF-03
+WF-03 OCR Processing
 
 ↓
 
-WF-04
+WF-04 Rule-Based Classification
 
 ↓
 
-WF-05
+WF-05 Duplicate Detection
 
 ↓
 
-WF-06
+WF-06 AI Classification
 
 ↓
 
-WF-07
+WF-07 Data Extraction
 
 ↓
 
-WF-08
+WF-08 Line Item Extraction
 
 ↓
 
-WF-09
+WF-09 Business Rules Engine
 
 ↓
 
-WF-10
+WF-10 Validation Engine
 
 ↓
 
-WF-11
+WF-11 Human Review
 
 ↓
 
-WF-12
+WF-12 Database Update
 
 ↓
 
-WF-13
+WF-13 Monitoring & Logging
 
 ↓
 
-WF-14
+WF-14 Error Handling & Retry
 
 ↓
 
-WF-15
+WF-15 Notifications
+
+↓
+
+WF-16 Analytics Dashboard
 
 This order is LOCKED.
 
+It cannot be changed.
+
 ---
 
-####################################################################
+# IMPLEMENTATION MODE
+
+The AI must implement
+
+ONE workflow only.
+
+Never implement two workflows together.
+
+After finishing ONE workflow,
+
+STOP.
+
+Wait for user approval.
+
+Only after approval
+
+may the AI begin the next workflow.
+
+---
+
+# OUTPUT REQUIREMENTS
+
+For every workflow implementation the AI must produce
+
+• Workflow JSON
+
+• Node List
+
+• Node Configuration
+
+• Expressions
+
+• Credentials Required
+
+• Airtable Mapping
+
+• Error Handling
+
+• Testing Instructions
+
+After that
+
+STOP.
+
+---
+
+# IMPLEMENTATION BOUNDARIES
+
+The AI may
+
+✔ Create workflow JSON
+
+✔ Configure nodes
+
+✔ Configure expressions
+
+✔ Configure routing
+
+✔ Configure mappings
+
+✔ Configure credentials placeholders
+
+✔ Configure Airtable nodes
+
+✔ Configure AI Agent nodes
+
+✔ Configure validation
+
+✔ Configure retry logic
+
+✔ Configure monitoring
+
+The AI may NOT
+
+✘ Change architecture
+
+✘ Rename workflows
+
+✘ Rename Airtable tables
+
+✘ Rename Airtable fields
+
+✘ Change business rules
+
+✘ Change metadata
+
+✘ Change duplicate strategy
+
+✘ Change AI fallback
+
+✘ Change processing sequence
+
+✘ Create additional tables
+
+✘ Delete tables
+
+✘ Skip workflow layers
+
+---
+
+# WORKFLOW TARGETS
+
+====================================================
+
 WF-01
-####################################################################
+
+====================================================
 
 Workflow Name
 
 WF-01 Gmail Intake
 
-Implementation File
-
-WF-01-Gmail-Intake.json
-
 Purpose
 
-Receive Gmail
+Receive incoming Gmail messages.
 
-Download Attachments
+Download attachments.
 
-Extract Metadata
+Extract email metadata.
+
+Package attachments for downstream workflows.
 
 Output
 
 Attachment Package
 
-Status
+Implementation
 
-Not Implemented
+Create a NEW workflow JSON named
+
+WF-01-Gmail-Intake.json
+
+This file does not exist initially.
+
+The AI must create it.
+
+After completion,
+
+STOP.
+
+Wait for approval.
 
 ---
 
-####################################################################
 WF-02
-####################################################################
 
 Workflow Name
 
 WF-02 Attachment Processor
 
-Implementation File
-
-WF-02-Attachment-Processor.json
-
 Purpose
 
-Detect
+Identify
 
 Digital PDF
 
@@ -162,273 +334,771 @@ Scanned PDF
 
 Image
 
-Output
+Implementation
 
-Document Source
+Create
 
-Status
+WF-02-Attachment-Processor.json
 
-Not Implemented
+After completion,
+
+STOP.
 
 ---
 
-####################################################################
 WF-03
-####################################################################
 
 Workflow Name
 
 WF-03 OCR Processing
 
-Implementation File
-
-WF-03-OCR-Processing.json
-
 Purpose
-
-Extract Text
 
 OCR
 
 Vision OCR
 
-Normalize
-
-Output
+PDF Text Extraction
 
 Unified Text
 
-Status
+Implementation
 
-Not Implemented
+Create
+
+WF-03-OCR-Processing.json
+
+STOP after completion.
 
 ---
 
-####################################################################
 WF-04
-####################################################################
 
 Workflow Name
 
 WF-04 Rule-Based Classification
 
-Implementation File
-
-WF-04-Rule-Based-Classification.json
-
 Purpose
 
 Rule Engine
 
-Keyword Detection
+Document Classification
 
-Confidence
+Confidence Score
 
-Output
+Detected Elements
 
-Classification Result
+Implementation
 
-Status
+Create
 
-Not Implemented
+WF-04-Rule-Based-Classification.json
+
+STOP after completion.
 
 ---
 
-####################################################################
 WF-05
-####################################################################
 
 Workflow Name
 
 WF-05 Duplicate Detection
 
-Implementation File
-
-WF-05-Duplicate-Detection.json
-
 Purpose
 
-Generate Composite Business Key
+Composite Business Key
 
-Generate File Hash
+SHA256
 
-Search Airtable Registry
+Registry Search
 
 Duplicate Decision
 
-Output
+Implementation
 
-Duplicate Status
+Create
 
-Status
+WF-05-Duplicate-Detection.json
 
-Not Implemented
+STOP after completion.
 
----
+====================================================
 
-####################################################################
 WF-06
-####################################################################
+
+====================================================
 
 Workflow Name
 
 WF-06 AI Classification
 
-Implementation File
-
-WF-06-AI-Classification.json
 
 Purpose
 
-AI Fallback
+AI Fallback Engine
 
-Classification
+This workflow is ONLY executed when:
 
-Extraction
+Rule-Based Engine confidence is below threshold
 
-Confidence
+OR
 
-Output
+Rule-Based Engine fails
 
-AI Result
 
-Status
+AI Responsibilities:
 
-Not Implemented
+- Document Classification
+- Field Extraction
+- Confidence Evaluation
+- Missing Field Detection
+
+
+AI Input:
+
+Unified Document Text
+
+OCR Result
+
+Metadata Object
+
+
+AI Output:
+
+Structured Classification Object
+
+
+Implementation
+
+Create a NEW workflow JSON named:
+
+WF-06-AI-Classification.json
+
+
+After completion:
+
+STOP.
+
+Wait for approval.
+
 
 ---
 
-####################################################################
+====================================================
+
 WF-07
-####################################################################
+
+====================================================
 
 Workflow Name
 
 WF-07 Data Extraction
 
-Implementation File
+
+Purpose
+
+Extract structured business information.
+
+
+Supported Documents:
+
+Invoice
+
+Purchase Order
+
+Payment Receipt
+
+
+Extraction Requirements:
+
+Invoice:
+
+- Invoice Number
+- Vendor
+- Customer
+- Invoice Date
+- Due Date
+- Currency
+- Amount
+- Payment Status
+
+
+Purchase Order:
+
+- PO Number
+- Supplier
+- Buyer
+- PO Date
+- Delivery Date
+- Amount
+
+
+Payment Receipt:
+
+- Receipt Number
+- Customer
+- Payment Date
+- Amount
+- Payment Method
+
+
+Implementation
+
+Create:
 
 WF-07-Data-Extraction.json
 
-Purpose
 
-Extract Business Fields
+After completion:
 
-Normalize
+STOP.
 
-Output
+Wait for approval.
 
-Structured Data
-
-Status
-
-Not Implemented
 
 ---
 
-####################################################################
+====================================================
+
 WF-08
-####################################################################
+
+====================================================
 
 Workflow Name
 
-WF-08 Business Rules Engine
+WF-08 Line Item Extraction
 
-Implementation File
-
-WF-08-Business-Rules.json
 
 Purpose
 
-Business Validation
+Extract document line items.
 
-Business Logic
 
-Output
+Invoice Items:
+
+- Description
+- SKU
+- Category
+- Quantity
+- Unit Price
+- Tax
+- Line Total
+
+
+Purchase Order Items:
+
+- Item Description
+- Product Code
+- Quantity
+- Unit
+- Unit Price
+- Line Total
+
+
+Implementation
+
+Create:
+
+WF-08-Line-Item-Extraction.json
+
+
+After completion:
+
+STOP.
+
+Wait for approval.
+
+
+---
+
+====================================================
+
+WF-09
+
+====================================================
+
+Workflow Name
+
+WF-09 Business Rules Engine
+
+
+Purpose
+
+Apply business validation rules.
+
+
+Rules:
+
+- Required document fields
+- Vendor rules
+- Customer rules
+- Amount rules
+- Duplicate business rules
+- Document consistency rules
+
+
+Output:
 
 Business Validation Result
 
-Status
 
-Not Implemented
+Implementation
 
----
+Create:
 
-####################################################################
-WF-09
-####################################################################
+WF-09-Business-Rules.json
 
-Workflow Name
 
-WF-09 Validation Engine
+After completion:
 
-Implementation File
+STOP.
 
-WF-09-Validation-Engine.json
-
-Purpose
-
-Required Fields
-
-Schema
-
-Field Types
-
-Output
-
-Validation Result
-
-Status
-
-Not Implemented
 
 ---
 
-####################################################################
+====================================================
+
 WF-10
-####################################################################
+
+====================================================
 
 Workflow Name
 
-WF-10 Human Review
+WF-10 Validation Engine
 
-Implementation File
-
-WF-10-Human-Review.json
 
 Purpose
 
-Review Queue
+Technical and data validation.
 
-Approval
 
-Correction
+Validate:
 
-Output
+- Schema
+- Field Type
+- Required Fields
+- Currency Format
+- Date Format
+- Amount Format
 
-Review Result
 
-Status
+Decision:
 
-Not Implemented
+PASS
+
+or
+
+FAIL
+
+
+FAIL:
+
+Send to Human Review
+
+
+Implementation
+
+Create:
+
+WF-10-Validation-Engine.json
+
+
+After completion:
+
+STOP.
+
 
 ---
 
-####################################################################
+====================================================
+
 WF-11
-####################################################################
+
+====================================================
 
 Workflow Name
 
-WF-11 Database Update
+WF-11 Human Review
 
-Implementation File
-
-WF-11-Database-Update.json
 
 Purpose
 
-Update Airtable
+Manual approval and correction process.
+
+
+Human Review Required When:
+
+- AI confidence is low
+- Required fields missing
+- Validation failed
+- AI extraction failed
+- Business rule failed
+
+
+Human Review Actions:
+
+- Approve
+- Reject
+- Correct Data
+
+
+Store:
+
+- Reviewer ID
+- Review Time
+- Review Status
+- Correction Notes
+
+
+Implementation
+
+Create:
+
+WF-11-Human-Review.json
+
+
+After completion:
+
+STOP.
+
+
+---
+
+====================================================
+
+WF-12
+
+====================================================
+
+Workflow Name
+
+WF-12 Database Update
+
+
+Purpose
+
+Update Airtable production tables.
+
+
+Locked Tables:
+
+1. Invoice Summary
+
+2. Invoice Items
+
+3. Purchase Order Summary
+
+4. Purchase Order Items
+
+5. Document Registry
+
+
+Rules:
+
+No database update before:
+
+- Validation PASS
+- Business Rules PASS
+- Human Review PASS (if required)
+
+
+Implementation
+
+Create:
+
+WF-12-Database-Update.json
+
+
+After completion:
+
+STOP.
+
+
+---
+
+====================================================
+
+WF-13
+
+====================================================
+
+Workflow Name
+
+WF-13 Monitoring & Logging
+
+
+Purpose
+
+Enterprise monitoring.
+
+
+Track:
+
+- Workflow Execution ID
+- Processing Time
+- Success Rate
+- Failure Rate
+- AI Usage
+- Human Review Count
+- Document Volume
+
+
+Implementation
+
+Create:
+
+WF-13-Monitoring-Logging.json
+
+
+After completion:
+
+STOP.
+
+
+---
+
+====================================================
+
+WF-14
+
+====================================================
+
+Workflow Name
+
+WF-14 Error Handling & Retry
+
+
+Purpose
+
+Enterprise error recovery.
+
+
+Features:
+
+- Retry Queue
+- Failed Document Queue
+- Error Log
+- Dead Letter Queue
+
+
+Every error must store:
+
+- Error Message
+- Node Name
+- Execution ID
+- Timestamp
+- Retry Count
+
+
+Implementation
+
+Create:
+
+WF-14-Error-Handling-Retry.json
+
+
+After completion:
+
+STOP.
+
+
+---
+
+====================================================
+
+WF-15
+
+====================================================
+
+Workflow Name
+
+WF-15 Notifications
+
+
+Purpose
+
+Send system alerts.
+
+
+Channels:
+
+- Telegram
+- Email
+
+
+Notifications:
+
+Success
+
+Failure
+
+Human Review Required
+
+Duplicate Found
+
+System Error
+
+
+Implementation
+
+Create:
+
+WF-15-Notifications.json
+
+
+After completion:
+
+STOP.
+
+
+---
+
+====================================================
+
+WF-16
+
+====================================================
+
+Workflow Name
+
+WF-16 Analytics Dashboard
+
+
+Purpose
+
+Enterprise reporting.
+
+
+Metrics:
+
+Document Count
+
+Processing Time
+
+Success Rate
+
+Failure Rate
+
+Duplicate Rate
+
+AI Usage Rate
+
+Human Review Rate
+
+Vendor Statistics
+
+Document Type Statistics
+
+
+Implementation
+
+Create:
+
+WF-16-Analytics-Dashboard.json
+
+
+After completion:
+
+STOP.
+
+
+####################################################################
+AI IMPLEMENTATION PROTOCOL
+####################################################################
+
+
+The AI must follow this exact execution protocol.
+
+
+STEP 1
+
+Read repository.
+
+
+STEP 2
+
+Identify current workflow.
+
+
+STEP 3
+
+Create ONLY that workflow.
+
+
+STEP 4
+
+Test workflow logic.
+
+
+STEP 5
+
+Provide implementation output.
+
+
+STEP 6
+
+STOP.
+
+
+Never continue automatically.
+
+
+####################################################################
+LAYER COMPLETION RULE
+####################################################################
+
+
+A workflow is considered complete only when:
+
+
+1. Nodes created.
+
+2. Configuration completed.
+
+3. Expressions completed.
+
+4. Airtable mapping completed.
+
+5. Error handling added.
+
+6. Testing instructions provided.
+
+
+Only then can the workflow be marked completed.
+
+
+####################################################################
+APPROVAL GATE
+####################################################################
+
+
+The AI must wait for explicit user approval.
+
+
+Valid approval examples:
+
+"Approved"
+
+"Continue"
+
+"Next Workflow"
+
+
+Without approval:
+
+DO NOT continue.
+
+
+####################################################################
+AIRTABLE POLICY
+####################################################################
+
+
+The AI must use existing Airtable tables.
+
+
+Locked tables:
+
 
 Invoice Summary
 
@@ -440,182 +1110,53 @@ Purchase Order Items
 
 Document Registry
 
-Status
 
-Not Implemented
+The AI cannot:
 
----
+- Rename fields
+- Delete fields
+- Change types
+- Create duplicate tables
 
-####################################################################
-WF-12
-####################################################################
 
-Workflow Name
+Any new table requires explicit approval.
 
-WF-12 Monitoring & Logging
-
-Implementation File
-
-WF-12-Monitoring.json
-
-Purpose
-
-Execution Log
-
-Performance
-
-Metrics
-
-Status
-
-Not Implemented
-
----
 
 ####################################################################
-WF-13
+FINAL IMPLEMENTATION CONTRACT
 ####################################################################
 
-Workflow Name
 
-WF-13 Error Handling & Retry
+This repository defines the complete architecture.
 
-Implementation File
 
-WF-13-Error-Handling.json
+The AI is an implementation assistant only.
 
-Purpose
-
-Retry
-
-Dead Letter Queue
-
-Error Log
-
-Status
-
-Not Implemented
-
----
-
-####################################################################
-WF-14
-####################################################################
-
-Workflow Name
-
-WF-14 Notifications
-
-Implementation File
-
-WF-14-Notifications.json
-
-Purpose
-
-Telegram
-
-Email
-
-Alerts
-
-Status
-
-Not Implemented
-
----
-
-####################################################################
-WF-15
-####################################################################
-
-Workflow Name
-
-WF-15 Analytics Dashboard
-
-Implementation File
-
-WF-15-Analytics-Dashboard.json
-
-Purpose
-
-Dashboard
-
-Statistics
-
-KPIs
-
-Reporting
-
-Status
-
-Not Implemented
-
----
-
-####################################################################
-IMPLEMENTATION RULES
-####################################################################
 
 The AI must:
 
-• Build only ONE workflow at a time.
+Follow documents 01-26.
 
-• Never start WF-02 before WF-01 is approved.
+Follow workflow order.
 
-• Never start WF-03 before WF-02 is approved.
+Create one workflow at a time.
 
-• Continue sequentially.
-
-• Never redesign architecture.
-
-• Never rename workflow files.
-
-• Never merge workflows.
-
-• Never create additional workflow files.
-
-• Never modify previous workflows unless instructed.
-
----
-
-####################################################################
-OUTPUT FORMAT
-####################################################################
-
-For every workflow implementation
-
-Provide
-
-1. Workflow JSON
-
-2. Node Configuration
-
-3. Expressions
-
-4. Credentials Required
-
-5. Airtable Mapping
-
-6. Testing Procedure
-
-Then STOP.
+Stop after each workflow.
 
 Wait for approval.
 
----
 
-####################################################################
-FINAL CONTRACT
-####################################################################
+The AI must never:
 
-This document defines the ONLY approved implementation targets.
+Redesign.
 
-The AI must never ask:
+Simplify.
 
-"Which file should I modify?"
+Skip.
 
-"Where should I implement?"
+Merge.
 
-The implementation target is always defined by this document.
+Invent.
 
-END OF SECTION 26
+
+END OF DOCUMENT
