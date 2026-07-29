@@ -20,6 +20,155 @@ Target Platform
 - Telegram
 - Google Vision OCR (Optional)
 
+------
+
+# CRITICAL IMPLEMENTATION CONTRACT
+
+This document is the official Enterprise Architecture Contract for the Intelligent Document Processing Platform.
+
+Every AI, developer, automation engineer, or workflow designer must strictly follow this architecture exactly as documented.
+
+This document is the Single Source of Truth (SSOT) for the entire project.
+
+No workflow, database schema, processing sequence, AI logic, business rule, validation rule, routing strategy, or monitoring mechanism may be modified without explicit user approval.
+
+The architecture defined in this document is LOCKED.
+
+---
+
+# Mandatory Processing Contract
+
+The complete processing sequence must always follow this order.
+
+```
+Gmail Intake
+        ↓
+Attachment Processing
+        ↓
+Document Content Extraction
+        ↓
+Document Normalization
+        ↓
+Rule-Based Classification
+        ↓
+Duplicate Detection (Airtable Document Registry)
+        ↓
+Duplicate Decision
+        ↓
+Confidence Evaluation
+        ↓
+AI Fallback (Only when confidence is below threshold)
+        ↓
+Business Rules Engine
+        ↓
+Validation Engine
+        ↓
+Human Review (Only when validation or AI fails)
+        ↓
+Document Routing
+        ↓
+Business Processing
+        ↓
+Airtable Database Update
+        ↓
+Audit Logging
+        ↓
+Monitoring
+        ↓
+Notifications
+        ↓
+Analytics Dashboard
+```
+
+---
+
+# Mandatory Classification Policy
+
+Document classification MUST use document content only.
+
+Allowed sources
+
+- Extracted PDF Text
+- OCR Output
+- Vision OCR Output
+
+Never use
+
+- File Name
+- Attachment Name
+- Gmail Subject
+- Email Body Subject
+- Folder Name
+- MIME Type
+- File Extension
+
+---
+
+# Mandatory Rule Engine Policy
+
+The Rule-Based Engine is the primary decision engine.
+
+AI is NOT the primary classifier.
+
+Processing priority is always
+
+1. Rule-Based Engine
+2. Duplicate Detection
+3. Confidence Evaluation
+4. AI Fallback
+5. Human Review
+
+AI must never execute before the Rule-Based Engine or Duplicate Detection.
+
+---
+
+# Mandatory Duplicate Detection Policy
+
+Duplicate Detection MUST always be performed using Airtable Document Registry before any AI execution.
+
+Duplicate Detection must use
+
+- Composite Business Key
+- File Hash (SHA-256)
+- Document Type
+- Business Metadata
+
+Duplicate Detection must never rely on file names or email subjects.
+
+---
+
+# Mandatory Human Review Policy
+
+Human Review is the final safety layer.
+
+A document must be sent to Human Review if
+
+- Rule Engine cannot classify
+- AI confidence is below threshold
+- Validation fails
+- Required fields are missing
+- Business rules fail
+- Duplicate status is ambiguous
+
+---
+
+# Architecture Lock
+
+The AI must NEVER
+
+- Change the workflow sequence
+- Skip a processing layer
+- Merge unrelated layers
+- Replace Rule Engine with AI
+- Execute AI before Duplicate Detection
+- Change Airtable schemas
+- Rename production tables
+- Remove metadata
+- Change business rules
+- Change the architecture without explicit user approval
+
+This architecture is permanently locked unless the project owner explicitly authorizes a revision.
+
 ---
 
 # 1. Project Vision
